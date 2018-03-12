@@ -1,59 +1,41 @@
 <template>
   <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
-    </header>
-    <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <WelcomeVue />
-    </main>
+    <el-header>
+      <el-container>
+        <img src="./assets/logo.png" alt="Vue.js PWA" class="vue-logo"> Vue.js my-spotyve
+      </el-container>
+    </el-header>
+    <el-main>
+      <el-container>
+        <el-row :gutter="20">
+          <el-col :span="24">
+            <SpotySearch />
+          </el-col> 
+          <el-col :span="12">
+            <SpotifyResults 
+              type="Artists"
+            />
+          </el-col>
+          <el-col :span="12">
+            <SpotifyResults 
+              type="Albums"
+            />
+          </el-col>
+        </el-row>        
+      </el-container>
+    </el-main>
   </div>
 </template>
 
 <script>
-import WelcomeVue from '@/components/Home/WelcomeVue';
+import SpotySearch from '@/components/SpotySearch';
+import SpotifyResults from '@/components/SpotifyResults';
 
 export default {
   name: 'app',
   components: {
-    WelcomeVue,
+    SpotySearch,
+    SpotifyResults,
   },
 };
 </script>
-
-<style>
-body {
-  margin: 0;
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-main {
-  text-align: center;
-  margin-top: 40px;
-}
-
-header {
-  margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #35495E;
-  color: #ffffff;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
-}
-</style>
