@@ -20,14 +20,12 @@
 <script>
 import SpotyNavbar from '@/components/SpotyNavbar';
 import SpotySearch from '@/components/SpotySearch';
-import SpotifyResults from '@/components/SpotifyResults';
 
 export default {
   name: 'app',
   components: {
     SpotyNavbar,
     SpotySearch,
-    SpotifyResults,
   },
 };
 </script>
