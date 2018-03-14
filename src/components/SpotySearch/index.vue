@@ -1,10 +1,16 @@
 <template>
   <div class="SpotySearch">
-    <el-input placeholder="Please type artist name" v-model="artist" class="SpotySearch__search-input">
-      <el-button slot="append" icon="el-icon-search"
-        @click="submitSearch"
-      >Search</el-button>
-    </el-input>
+    <Row>
+      <Column md="10" sm="12" xs="12">
+        <MdInput label="Enter artist name" />
+      </Column>
+      <Column md="2" sm="12" xs="12" class="SpotySearch__btn-search-container">
+        <Btn block outline="primary">
+         <fa icon="magic" class="mr-1"/>
+          Search
+        </Btn>
+      </Column>
+    </Row>
   </div>
 </template>
 

@@ -1,14 +1,16 @@
 import Vue from 'vue';
-import ElementUI from 'element-ui';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'mdbvue/build/css/mdb.css';
+import 'mdbvue/src/components/Waves.css';
+
 import store from '@/store';
 import App from './App';
 
-require('element-ui/lib/theme-chalk/index.css');
+import './mdb';
+
 require('@/style/theme.sass');
 
 Vue.config.productionTip = false;
-
-Vue.use(ElementUI);
 
 /* eslint-disable no-new */
 new Vue({

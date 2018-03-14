@@ -7,6 +7,7 @@ export const togglePendingStoreActions = () =>
   (target, key, descriptor) => {
     const _descriptor = descriptor;
     const orginalMethod = _descriptor.value;
+    // eslint-disable-next-line func-names
     _descriptor.value = async function (...args) {
       const storeActionsName = key;
       store.commit('TOGGLE_PENDING_STORE_ACTIONS', storeActionsName);
