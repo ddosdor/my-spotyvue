@@ -13,9 +13,17 @@ const root = './src';
 
 // TASK TO CREATE NEW COMPONENT
 gulp.task('component',() => {
-  let { name, destPath, type } = _prepareParams( yargs , 'components' );
+  let { name, destPath, parentPath, shouldCreateUnitTestFile } = _prepareParams( yargs , 'components' );
+  let destTestPath = path.join('__tests__/components', parentPath);
   const parent = destPath.split('\\')[3];
-  return _startTask(_setPath(`component`), name, destPath);
+  return _startTask(
+    _setPath(`component`), 
+    name, 
+    destPath,
+    shouldCreateUnitTestFile,
+    _setPath(`component-test`),
+    destTestPath,
+  );
 });
 
 // TASK TO CREATE NEW CONTAINER
@@ -47,7 +55,7 @@ const _capitalize = (name = '') => name.charAt(0).toUpperCase() + name.slice(1);
 
 const _resolveToPath = (pathCreate = '', glob = '') => path.join(root, pathCreate, glob);
 
-const _startTask = (paths, name, destPath) => 
+const _startTask = (paths, name, destPath, shouldCreateUnitTestFile = false, testPaths = '', destTestPath = '') => {
   gulp.src(paths.blankTemplates)
     .pipe(template({
       name: name,
@@ -55,9 +63,23 @@ const _startTask = (paths, name, destPath) =>
     }))
     .pipe(gulp.dest(destPath));
 
+  if (shouldCreateUnitTestFile) {
+    gulp.src(testPaths.blankTemplates)
+      .pipe(template({
+        name: name,
+        upCaseName: _capitalize(name)
+      }))
+      .pipe(rename((path) => {
+        path.basename = path.basename.replace('temp', `${_capitalize(name)}.spec`);
+      }))   
+      .pipe(gulp.dest(destTestPath));
+  }
+}
+
 const  _prepareParams = (yargs = {}, dest = '') => {
   const name = yargs.argv.name;
   const parentPath = yargs.argv.parent || '';
   const destPath = path.join(_resolveToPath(dest), parentPath, _capitalize(name));
-  return { name, destPath };
+  const shouldCreateUnitTestFile = yargs.argv.test || false;
+  return { name, destPath, parentPath, shouldCreateUnitTestFile };
 }
