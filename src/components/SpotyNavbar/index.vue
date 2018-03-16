@@ -7,6 +7,7 @@
           <NavbarItem href="meandjs.com">Blog</NavbarItem>
           <NavbarItem href="#">Github</NavbarItem>
         </NavbarNav>
+        <Btn size="sm" role="button" @click.native="loginWithSpotify">Login with Spotify</Btn>
       </NavbarCollapse>
     </Navbar>
   </div>
