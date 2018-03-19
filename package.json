@@ -19,7 +19,8 @@
     ],
     "moduleNameMapper": {
       "^@[/](.+)": "<rootDir>/src/$1",
-      "^vue$": "vue/dist/vue.common.js"
+      "^vue$": "vue/dist/vue.common.js",
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/style.mock.js"
     },
     "moduleFileExtensions": [
       "js",
