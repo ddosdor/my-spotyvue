@@ -1,25 +1,30 @@
 /* eslint-disable */
 import { shallow, createLocalVue } from '@vue/test-utils';
-import { Container, Navbar, NavbarCollapse, NavbarItem, Row, Column, Btn,
-  Fa,
-} from 'mdbvue';
-
-// HACK: unfortunately, not all components are available
-import MdInput from 'mdbvue/src/components/MdInput';
-import NavbarNav from 'mdbvue/src/components/NavbarNav';
 
 import SpotySearch from '@/components/SpotySearch';
 
 describe('SpotySearch Component', () => {
   let component;
+  const vue = createLocalVue();
 
   beforeEach(() => {
-    component = shallow(SpotySearch, {
-
-    })
+    component = shallow(SpotySearch);
+    component.vm.searchAlbums = jest.fn();
   })
 
   it('should clear search input after click submit', () => {
-    console.log(component.html());
+    const button = component.find('button');
+    component.vm.artist = 'some artist';
+    button.trigger('click');
+    vue.nextTick(() => {
+      expect(component.find('input').element.value).toBe("")    
+    })
   });
+
+  it('should called searchAlbums mapped vuex actions after button click', () => {
+    const button = component.find('button');
+    button.trigger('click');
+    expect(component.vm.searchAlbums).toBeCalledWith(component.vm.artist)
+  })
+
 });

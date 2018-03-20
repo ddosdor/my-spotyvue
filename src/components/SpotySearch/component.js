@@ -16,6 +16,7 @@ export default {
     ...mapActions(['searchAlbums']),
     submitSearch() {
       this.searchAlbums(this.artist);
+      this.artist = null;
     },
   },
 };
