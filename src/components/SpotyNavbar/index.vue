@@ -1,6 +1,6 @@
 <template>
   <div class="SpotyNavbar">
-    <Navbar class="navbar-light elegant-color lighten-5" name="my-Spotyvue" href="#">
+    <!-- <Navbar class="navbar-light elegant-color lighten-5" name="my-Spotyvue" href="#">
       <img src="../../assets/logo.png" class="SpotyNavbar__logo-image">
       <NavbarCollapse>
         <NavbarNav>
@@ -9,7 +9,7 @@
         </NavbarNav>
         <Btn size="sm" role="button" @click.native="loginWithSpotify">Login with Spotify</Btn>
       </NavbarCollapse>
-    </Navbar>
+    </Navbar> -->
   </div>
 </template>
 

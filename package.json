@@ -29,22 +29,13 @@
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-    },
-    "transformIgnorePatterns": [
-      "/node_modules(?![\\\\/]mdbvue[\\\\/])/"
-   ]     
+    }
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "bootstrap": "^4.0.0",
-    "bootstrap-vue": "^2.0.0-rc.2",
-    "chart.js": "^2.7.2",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
-    "mdbootstrap": "^4.5.0",
-    "mdbvue": "^4.1.0",
     "vue": "^2.5.2",
-    "vue-chartjs": "^3.2.1",
     "vue-router": "^3.0.1",
     "vuex": "^2.3.1"
   },
